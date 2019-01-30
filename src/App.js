@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './styles/App.scss';
 import { getFriends } from './store/actions';
-import { Route } from 'axios';
+import { Route } from 'react-router-dom';
 
-import Home from './containers/Home/';
+import Home from './containers/Home/Home';
 
 class App extends Component {
   componentDidMount() {
@@ -12,6 +12,7 @@ class App extends Component {
     console.log(this.props);
   }
   render() {
+    console.log(this.props);
     return (
       <>
         <Route exact path='/' component={Home} />
@@ -20,7 +21,11 @@ class App extends Component {
   }
 }
 
+const map = state => ({
+  friends: state.friends.friends
+});
+
 export default connect(
-  null,
+  map,
   { getFriends }
 )(App);

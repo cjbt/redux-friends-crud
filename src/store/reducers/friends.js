@@ -7,10 +7,11 @@ const initialState = {
 const friends = (state = initialState, action) => {
   switch (action.type) {
     case GET_FRIENDS:
+      console.log(action);
       return {
-        ...state,
         friends: action.payload
       };
+
     default:
       return state;
   }
